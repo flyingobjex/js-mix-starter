@@ -6,7 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 
 .idea
-dist/bundle.js
+build/bundle.js
 
 .DS_Store
 # Runtime data

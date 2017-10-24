@@ -1,15 +1,16 @@
-var path = require("path");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path');
 
 module.exports = {
     entry: './src/main.js',
     output: {
-        path: path.resolve('./dist'),
+        path: path.resolve('./build'),
         filename: "bundle.js",
         libraryTarget: 'var',
-        library: 'jslib',
+        library: 'app',
     },
     devServer: {
-        contentBase: './dist'
+        contentBase: './build'
     },
     module: {
         loaders: [
@@ -22,5 +23,26 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    plugins: [
+        new CopyWebpackPlugin([
+
+            // {output}/to/file.txt
+            { from: 'build/bundle.js', to: '../../JSMixStarter/JSMixStarter/js/bundle.js' },
+            { from: 'src/main.js', to: '../../JSMixStarter/JSMixStarter/js/main.js' },
+
+            // // {output}/to/directory/file.txt
+            // { from: 'from/file.txt', to: 'to/directory' },
+            //
+            // // Copy glob results to /absolute/path/
+            // { from: 'from/directory/**/*', to: '/absolute/path' },
+
+        ], {
+
+            // By default, we only copy modified files during
+            // a watch or webpack-dev-server build. Setting this
+            // to `true` copies all files.
+            copyUnmodified: false
+        })
+    ]
 };

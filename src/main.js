@@ -1,12 +1,13 @@
 const $ = require('jquery');
-$('#target').html('!!!!!!!!!!!!!!!!!!!');
-$('#target2').html('444444444');
+
+// check the connection between bundle & html file
+$('#target').html('@@@@@');
+$('#target2').html('111222333444');
 
 
-let helloWorld = function () {
-
-    return "Hello World from bundle.js !*!*! ";
-};
+function helloWorld() {
+    return "Hello Wold from bundle.js !*!*! ";
+}
 
 let jsData = {
     foo: "bar",
